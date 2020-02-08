@@ -35,7 +35,9 @@ namespace mastermind
         }
         static bool isValidInput(string input, int num_options, int sequence_len) {
             if (input == null) {
-                Console.WriteLine("Invalid input.");
+                Console.WriteLine();
+                Console.WriteLine("Goodbye!");
+                System.Environment.Exit(0);
                 return false;
             }
             string[] sequence = input.Split(" ");
@@ -121,7 +123,8 @@ namespace mastermind
                 /* Gets and validates input */
                 do
                 {
-                    Console.Write("Enter a sequence: ");
+                    Console.WriteLine("Enter a sequence separated by spaces: ");
+                    Console.Write("$ ");
                     input = Console.ReadLine();
                 } while (isValidInput(input, num_options, sequence_len) == false);
 
