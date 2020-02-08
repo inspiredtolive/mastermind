@@ -13,6 +13,9 @@ $ cd mastermind
 $ dotnet run
 ```
 
+## Known Issues
+* On Windows, cmd.exe and PowerShell are not UTF-8 aware on default. Try these [instructions](https://stackoverflow.com/questions/57131654/using-utf-8-encoding-chcp-65001-in-command-prompt-windows-powershell-window/57134096#57134096) for some emoji goodness.
+
 ## Authors
 Marco Chan - [Github](https://github.com/inspiredtolive)
 Alia Vang - [Github](https://github.com/aliavang)
