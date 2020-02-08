@@ -100,7 +100,7 @@ namespace mastermind
             const int num_options = 6;
             const int sequence_len = 4;
             const int tries = 12;
-            string[] emojis = {"", "\U0001F431", "\U0001F425", "\U0001F428", "\U0001F435", "\U0001F439"};
+            string[] emojis = {"", "\U0001F431", "\U0001F427", "\U0001F428", "\U0001F435", "\U0001F439"};
             int[,] guesses = new int[tries, sequence_len];
             string[,] status = new string[tries, sequence_len];
             int[] answer = new int[sequence_len];
