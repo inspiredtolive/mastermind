@@ -12,7 +12,7 @@ $ dotnet restore
 ```
 
 ## Usage
-`$ dotnet run```
+`$ dotnet run`
 
 ## Authors
 Marco Chan - [Github](https://github.com/inspiredtolive)
