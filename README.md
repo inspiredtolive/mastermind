@@ -5,14 +5,13 @@ Mastermind is a CLI game written in C#.
 * .NET Core SDK v3.1 [download](https://dotnet.microsoft.com/download)
 
 ## Installation
-```
-$ git clone https://github.com/inspiredtolive/mastermind.git
-$ cd mastermind
-$ dotnet restore
-```
+```$ git clone https://github.com/inspiredtolive/mastermind.git```
 
 ## Usage
-`$ dotnet run`
+```
+$ cd mastermind
+$ dotnet run
+```
 
 ## Authors
 Marco Chan - [Github](https://github.com/inspiredtolive)
