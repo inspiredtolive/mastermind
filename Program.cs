@@ -4,13 +4,17 @@ namespace mastermind
 {
     class Mastermind
     {
-        static void printBoard(int[,] guesses, int num_options, string[,] status, bool choice) {
+        static void printBoard(int[,] guesses, int num_options, string[,] status, string[] emojis, bool choice) {
             string delim;
             Console.WriteLine("-------------");
             for (int i = 0; i < guesses.GetLength(0); i++) {
                 delim = "";
                 for (int j = 0; j < guesses.GetLength(1); j++) {
-                    Console.Write(delim + guesses[i, j].ToString());
+                    if (guesses[i, j] == 0) {
+                        Console.Write(delim + delim + "o");
+                    } else {
+                        Console.Write(delim + emojis[guesses[i, j]]);
+                    }
                     delim = " ";
                 }
                 Console.Write(" ");
@@ -23,7 +27,7 @@ namespace mastermind
             if (choice) {
                 Console.WriteLine("-- choices --");
                 for (int i = 1; i < num_options; i++) {
-                    Console.Write(delim + i.ToString());
+                    Console.Write(delim + i.ToString() + ". " + emojis[i]);
                     delim = ", ";
                 }
                 Console.WriteLine();
@@ -81,12 +85,12 @@ namespace mastermind
             Console.WriteLine("You Win!");
             Console.WriteLine("=============");
         }
-        static void printLoseMessage(int[] answer) {
+        static void printLoseMessage(int[] answer, string[] emojis) {
             Console.WriteLine("=============");
             Console.WriteLine("You Lose!");
             Console.Write("The Answer Was:");
             for (int i = 0; i < answer.GetLength(0); i++) {
-                Console.Write(" " + answer[i].ToString());
+                Console.Write(" " + emojis[answer[i]]);
             }
             Console.WriteLine();
             Console.WriteLine("=============");
@@ -96,6 +100,7 @@ namespace mastermind
             const int num_options = 6;
             const int sequence_len = 4;
             const int tries = 12;
+            string[] emojis = {"", "\U0001F431", "\U0001F425", "\U0001F428", "\U0001F435", "\U0001F439"};
             int[,] guesses = new int[tries, sequence_len];
             string[,] status = new string[tries, sequence_len];
             int[] answer = new int[sequence_len];
@@ -111,11 +116,12 @@ namespace mastermind
             /* Starts the game loop. */
             for (int i = 0; i < tries; i ++) {
                 /* Prints the board */
-                printBoard(guesses, num_options, status, true);
+                printBoard(guesses, num_options, status, emojis, true);
 
                 /* Gets and validates input */
                 do
                 {
+                    Console.Write("Enter a sequence: ");
                     input = Console.ReadLine();
                 } while (isValidInput(input, num_options, sequence_len) == false);
 
@@ -130,13 +136,13 @@ namespace mastermind
 
                 /* Checks if the user won. */
                 if (checkWin(status, i)) {
-                    printBoard(guesses, num_options, status, false);
+                    printBoard(guesses, num_options, status, emojis, false);
                     printWinMessage();
                     return;
                 }
             }
-            printBoard(guesses, num_options, status, false);
-            printLoseMessage(answer);
+            printBoard(guesses, num_options, status, emojis, false);
+            printLoseMessage(answer, emojis);
             return;
         }
     }
